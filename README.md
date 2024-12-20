@@ -13,6 +13,9 @@ This is the HCL-EA30 intelligent control board developed by HANKERILA
 12.Provides source programs for each function
 
 Manufacturer: Hangzhou Hankerila Technology Co., LTD
+
 Buy store: https://www.aliexpress.com/store/1103677547
+
 Whatsapp: +8613575789565
+
 youtube: https://www.youtube.com/@hankerila
