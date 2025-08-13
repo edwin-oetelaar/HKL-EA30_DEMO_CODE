@@ -1,0 +1,75 @@
+esphome:
+  name: ds18b20
+  friendly_name: DS18B20
+
+esp32:
+  board: esp32dev
+  framework:
+    type: arduino
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: "WHcNXkNgls+7ExB/64yAAT/a+QoGO+IbLvjf6ZLoW/w="
+
+ota:
+  - platform: esphome
+    password: "cd3f80dd4d565e4ab616a56d50ad4cb9"
+
+ethernet:
+  type: LAN8720
+  mdc_pin: GPIO23
+  mdio_pin: GPIO18
+  clk_mode: GPIO17_OUT
+  phy_addr: 0
+
+  # Optional manual IP
+  manual_ip:
+    static_ip: 192.168.50.126
+    gateway: 192.168.50.1
+    subnet: 255.255.255.0
+    
+one_wire:
+  - platform: gpio
+    pin: GPIO15
+    id: hub_1
+  - platform: gpio
+    pin: GPIO16
+    id: hub_2
+  - platform: gpio
+    pin: GPIO32
+    id: hub_3
+  - platform: gpio
+    pin: GPIO33
+    id: hub_4
+sensor:
+  - platform: dallas_temp
+    address:  0x6d0000006b35ac28
+    name: "temperature1"
+    one_wire_id: hub_1
+    update_interval: 10s
+    id: tmp01
+
+  - platform: dallas_temp
+    address: 0x0b0000006a834228
+    name: "temperature2"
+    one_wire_id: hub_2
+    update_interval: 10s
+    id: tmp02
+
+  - platform: dallas_temp
+    address:  0xf40000006ab98128
+    name: "temperature3"
+    one_wire_id: hub_3
+    update_interval: 10s
+    id: tmp03
+    
+  - platform: dallas_temp
+    address: 0xb6000000a810fe28
+    name: "temperature4"
+    one_wire_id: hub_4
+    update_interval: 10s
+    id: tmp04 
